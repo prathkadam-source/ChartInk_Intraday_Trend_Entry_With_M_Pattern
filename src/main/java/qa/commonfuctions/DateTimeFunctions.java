@@ -43,6 +43,7 @@ public class DateTimeFunctions {
             } else if (dateTime1.isBefore(dateTime2)) {
                 System.out.println("dateTime1 is before dateTime2");
                 ReportUtil.report(true, "INFO", "dateTime1 is before dateTime2 : ", "dateTime1 :" + dateTime1 + " ,dateTime2: " + dateTime2);
+//                status = true;
             }
 
         } catch (Exception e) {

@@ -8,6 +8,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import qa.commonfuctions.DateTimeFunctions;
 
+import static qa.base.BaseTest.prop;
+
 
 public class Constants {
 
@@ -17,9 +19,13 @@ public class Constants {
     public static final String WEBPAGE_ALERT = "ALERT";
 
     // <editor-fold desc="SubTabDetails">
-    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION ="ST2_Cndt1_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_FIRST_CONDITION = "Scan_For_*BUY*_Trades_+Ve_Supertrend";
+    public static final String TAB_WATCHLISTPAGE_NAME_ST_1_Cndt_2_Watchlist = "Buy_Side_Stocks_For_Intraday";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION = "Scan_Sell_Trades_+Ve_Spertrnd_upd for SMA crossover MACD zero line ALL FUTURES";
+    public static final String TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday";
+
     public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION ="ST2_Cndt2_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
-    public static final String TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_3_Watchlist = "ST2_Cndt_3_Watchlist";
+
     public static final String TAB_DEFAULT_WATCHLIST_PAGE = "Default_Watchlist";
     public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION_NEXTDAY_CARRY_FORWARD ="ST_1_Second_Condition_For_NextDay_Carry_Forward_Scenario";
     // </editor-fold>
@@ -33,20 +39,35 @@ public class Constants {
 
     //Text File related details
     public static final String DATA_FOLDER_PATH = System.getProperty("user.dir") + "/src/main/resources/data/";
+    public static String TEXTFILE_PATH_ST1_CNDT2_WATCHLIST_UPDATES = "ST1_Cndt2_Watchlist_Updates.txt";
+    public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES = "ST2_Cndt2_Watchlist_Updates.txt";
+    public static String TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT = System.getProperty("user.dir") + "/src/main/resources/data/copy_Pasted_Alerts_Output.txt";
+
+    public static String TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST = System.getProperty("user.dir") + "/src/main/resources/data/runTime_Stocks_for_watchlist.txt";
+   public static String TEXTFILE_PATH_FOR_ST1_WATCHLISTS_NAME_AND_URL = System.getProperty("user.dir") + "/src/main/resources/data/ST1_Watchlist_Names.properties";
+
+
+
+
     public static String TEXTFILE_NAME_ST2_CNDT2_WATCHLIST_UPDATES = "ST2_Cndt2_Watchlist_Updates.txt";
     public static String TEXTFILE_NAME_ST2_CNDT3_WATCHLIST_UPDATES = "ST2_Cndt3_Watchlist_Updates.txt";
+
+
+
+
     public static String TEXTFILE_NAME_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_TO_AVOID_DUPLICATE_ALERTS = "ST2_Cndt3_Watchlist_Stocks_Removed_TO_AVOID_DUPLICATE_ALERTS.txt";
     public static String TEXTFILE_NAME_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_FOR_INVALID_CONDITION = "ST2_Cndt3_Watchlist_Stocks_Removed_FOR_INVALID_CONDITION.txt";
     public static String TEXTFILE_NAME_ST1_CNDT2_ALERTS = "ST1_Cndt2_Alerts.txt";
     public static String TEXTFILE_NAME_ST1_CNDT3_ALERTS = "ST1_Cndt3_Alerts.txt";
-    public static String TEXTFILE_NAME_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT1 = "copy_Pasted_Alerts_Output_Of_ST2_Cndt1.txt";
+    public static String TEXTFILE_NAME_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT1 = "copy_Pasted_Alerts_Output.txt";
     public static String TEXTFILE_NAME_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT2 = "copy_Pasted_Alerts_Output_Of_ST2_Cndt2.txt";
     public static String TEXTFILE_NAME_FOR_NEXYDAY_CARRY_FORWARD_STOCKS_OF_ST2_CNDT2 = "runTime_Stocks_for_ST2_Cndt2_NextDay_Carry_Forward.txt";
         public static String FOLDER_LOCATION_WATCHLISTS_TEXTFILE = "";
     public static String FOLDER_LOCATION_ALERT_TEXTFILE = "";
 
     //Text file path
-    public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES = "";
+
+
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = "";
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_FOR_INVALID_CONDITION = "";
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_TO_AVOID_DUPLICATE_ALERTS = "";
@@ -61,13 +82,11 @@ public class Constants {
 
     // <editor-fold desc="ST1_CNDT1 variables ">
     // Setting up date for 1st default date time comparison
-    public static String ST2_CNDT1_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
-    public static String ST2_CNDT1_LATEST_ALERT_TIMESTAMP = "";
-    public static String ST2_CNDT1_LATEST_ALERT_STOCK_NAMES = "";
+    public static String DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
+    public static String LATEST_ALERT_TIMESTAMP = "";
+    public static String LATEST_ALERT_STOCK_NAMES = "";
 
     // FOR ST1_Cndt2 watchlist Name and url of current excution
-    public static String ST2_CNDT2_CURRENT_RUN_WATCHLIST_NAME = "";
-    public static String ST2_CNDT2_CURRENT_RUN_WATCHLIST_URL =  "";
 
     public static String ACTION_STOCKS_ADDED = "Stocks added into watchlist";
 
@@ -98,13 +117,13 @@ public class Constants {
 
     // <editor-fold desc="Stock Watchlist file location ">
 
-    public static String TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_ST2_CNDT2_WATCHLIST = System.getProperty("user.dir") + "/src/main/resources/data/runTime_Stocks_for_ST2_Cndt2.txt";
+    public static String TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_ST2_CNDT2_WATCHLIST = System.getProperty("user.dir") + "/src/main/resources/data/runTime_Stocks_for_watchlist.txt";
 
     public static String TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_ST2_CNDT3_WATCHLIST = System.getProperty("user.dir") + "/src/main/resources/data/runTime_Stocks_for_ST2_Cndt3.txt";
 
     // </editor-fold>
 
-    public static String TEXTFILE_PATH_FOR_ST2_CNDT2_WATCHLISTS_NAME_AND_URL = System.getProperty("user.dir") + "/src/main/resources/data/ST2_Cndt2_Watchlist_Names.properties";
+    public static String TEXTFILE_PATH_FOR_ST2_CNDT2_WATCHLISTS_NAME_AND_URL = System.getProperty("user.dir") + "/src/main/resources/data/ST2_Cndt2_Watchlist_Names_Ignored_for_now.properties";
 
     public static String TEXTFILE_PATH_FOR_F_AND_O_STOCKS_DETAILS = System.getProperty("user.dir") + "/src/main/resources/data/FAndO_Stocks_Detail.properties";
 

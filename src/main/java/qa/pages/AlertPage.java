@@ -46,9 +46,9 @@ public class AlertPage extends BaseTest {
         Thread.sleep(500);
     }
 
-    public boolean verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1() throws InterruptedException {
+    public boolean verify_And_Get_Latest_Alert_Displayed_For_Strategies(String TextMessage , String TabNameToNavigate) throws InterruptedException {
 
-        ReportUtil.report( true, "INFO", "-- Function -- Starting -- verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1 function",  "");
+        ReportUtil.report( true, "INFO", "-- Function -- Starting -- verify_And_Get_Latest_Alert_Displayed_For_Strategies function",  "");
 
         boolean new_Alert_Displayed = false;
         String alerts_Stock_Data = "";
@@ -57,7 +57,7 @@ public class AlertPage extends BaseTest {
 
         try {
 
-            newTabsSetUp.navigateToTab(Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION);
+            newTabsSetUp.navigateToTab(TabNameToNavigate);
 
             if (this.isElement_Copy_Button_Visible()) {
 
@@ -66,149 +66,40 @@ public class AlertPage extends BaseTest {
                 this.click_On_Popup_Ok_Button();
 
                 //Paste to run time data file for reading the Alerts
-                FileAndFolderFunctions.paste_Copied_Data_To_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT1);
+                FileAndFolderFunctions.paste_Copied_Data_To_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT);
 
                 //Read the Textfile for stock Alerts
-                alerts_Stock_Data = FileAndFolderFunctions.read_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT1, 2);
+                alerts_Stock_Data = FileAndFolderFunctions.read_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT, 2);
                 latest_Alert_TimeStamp = this.get_Latest_Alert_TimeStamp(alerts_Stock_Data);
                 latest_Alert_Stock_Names = this.get_Latest_Alert_Stock_Names(alerts_Stock_Data);
 
                 // Verify Alert is latest or not
-                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,Constants.ST2_CNDT1_DEFAULT_ALERT_TIMESTAMP)){
+                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,Constants.DEFAULT_ALERT_TIMESTAMP)){
                     new_Alert_Displayed = true;
                     //updating details as gloabl constant
-                    Constants.ST2_CNDT1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST2_CNDT1_LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST2_CNDT1_LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
+                    Constants.DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    Constants.LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    Constants.LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
 
-                    ReportUtil.report(true, "PASS", "Verify latest Alerts displayed", "latest Alerts displayed");
+                    ReportUtil.report(true, "PASS", "Verify latest Alerts displayed for " + TextMessage, "latest Alerts displayed" +
+                            "at " +Constants.LATEST_ALERT_TIMESTAMP+ " : "+  Constants.LATEST_ALERT_STOCK_NAMES );
                 } else {
-                    ReportUtil.report(true, "INFO", "Verify latest Alerts displayed", "No new Alert displayed");
+                    ReportUtil.report(true, "INFO", "Verify latest Alerts displayed for " + TextMessage, "No new Alert displayed");
                 }
 
             } else {
-                ReportUtil.report(true, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1 ", "Alerts yet not displayed");
+                ReportUtil.report(true, "FAIL", "verify_And_Get_Latest_Alert_Displayed_for " + TextMessage,
+                        "Alerts yet not displayed");
 
             }
 
         }catch (Exception e) {
 
-            System.out.println("verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1, ",  e.getMessage());
+            System.out.println("verify_And_Get_Latest_Alert_Displayed_For_Strategies: "+ TextMessage +" : " + e.getMessage());
+            ReportUtil.report( false, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_Strategies, "
+                    + TextMessage ,  e.getMessage());
         }
-        ReportUtil.report( true, "INFO", "-- Function -- Ending -- verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt1 function",  "");
-
-        //return new_Alert_Displayed;
-        Constants.ST2_CNDT1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-        Constants.ST2_CNDT1_LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-        Constants.ST2_CNDT1_LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
-        return true;
-    }
-
-    public boolean verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt2() throws InterruptedException {
-
-        ReportUtil.report( true, "INFO", "-- Function -- Starting -- verify_And_Get_Latest_Alert_Displayed_For_ST2_Cndt2 function",  "");
-
-        boolean new_Alert_Displayed = false;
-        String alerts_Stock_Data = "";
-        String latest_Alert_TimeStamp = "";
-        String latest_Alert_Stock_Names = "";
-
-        try {
-
-            newTabsSetUp.navigateToTab(Constants.TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION);
-
-            if (this.isElement_Copy_Button_Visible()) {
-
-                //Click on Copy button
-                this.click_On_Copy_Button();
-                this.click_On_Popup_Ok_Button();
-
-                //Paste to run time data file for reading the Alerts
-                FileAndFolderFunctions.paste_Copied_Data_To_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT2);
-
-                //Read the Textfile for stock Alerts
-                alerts_Stock_Data = FileAndFolderFunctions.read_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT2, 2);
-                latest_Alert_TimeStamp = this.get_Latest_Alert_TimeStamp(alerts_Stock_Data);
-                latest_Alert_Stock_Names = this.get_Latest_Alert_Stock_Names(alerts_Stock_Data);
-
-                // Verify Alert is latest or not
-                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,Constants.ST1_CNDT2_DEFAULT_ALERT_TIMESTAMP)){
-                    new_Alert_Displayed = true;
-                    //updating details as gloabl constant
-                    Constants.ST1_CNDT2_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST1_CNDT2_LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST1_CNDT2_LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
-
-                    ReportUtil.report(true, "PASS", "Verify latest Alerts displayed", "latest Alerts displayed");
-                } else {
-                    ReportUtil.report(true, "INFO", "Verify latest Alerts displayed", "No new Alert displayed");
-                }
-
-            } else {
-                ReportUtil.report(true, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2 ", "Alerts yet not displayed");
-
-            }
-
-        }catch (Exception e) {
-
-            System.out.println("verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2, ",  e.getMessage());
-        }
-        ReportUtil.report( true, "INFO", "-- Function -- Ending -- verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2 function",  "");
-
-        return new_Alert_Displayed;
-    }
-
-    public boolean verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_NextDay_Carry_Forward_Scenario() throws InterruptedException {
-
-        ReportUtil.report( true, "INFO", "-- Function -- Starting -- verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_Nextday_Carry_Forward_Scenario function",  "");
-
-        boolean new_Alert_Displayed = false;
-        String alerts_Stock_Data = "";
-        String latest_Alert_TimeStamp = "";
-        String latest_Alert_Stock_Names = "";
-
-        try {
-
-            newTabsSetUp.navigateToTab(Constants.TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION_NEXTDAY_CARRY_FORWARD);
-
-            if (this.isElement_Copy_Button_Visible()) {
-
-                //Click on Copy button
-                this.click_On_Copy_Button();
-                //Paste to run time data file for reading the Alerts
-                FileAndFolderFunctions.paste_Copied_Data_To_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT2);
-
-                //Read the Textfile for stock Alerts
-                alerts_Stock_Data = FileAndFolderFunctions.read_Text_File(Constants.TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT_OF_ST2_CNDT2, 2);
-                latest_Alert_TimeStamp = this.get_Latest_Alert_TimeStamp(alerts_Stock_Data);
-                latest_Alert_Stock_Names = this.get_Latest_Alert_Stock_Names(alerts_Stock_Data);
-
-                // Verify Alert is latest or not
-                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,Constants.ST1_CNDT2_DEFAULT_ALERT_TIMESTAMP)){
-                    new_Alert_Displayed = true;
-                    //updating details as gloabl constant
-                    Constants.ST1_CNDT2_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST1_CNDT2_LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
-                    Constants.ST1_CNDT2_LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
-
-                    ReportUtil.report(true, "PASS", "Verify latest Alerts displayed", "latest Alerts displayed");
-                } else {
-                    ReportUtil.report(true, "INFO", "Verify latest Alerts displayed", "No new Alert displayed");
-                }
-
-            } else {
-                ReportUtil.report(true, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_Nextday_Carry_Forward_Scenario ", "Alerts yet not displayed");
-
-            }
-
-        }catch (Exception e) {
-
-            System.out.println("verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_Nextday_Carry_Forward_Scenario: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_Nextday_Carry_Forward_Scenario, ",  e.getMessage());
-        }
-        ReportUtil.report( true, "INFO", "-- Function -- Ending -- verify_And_Get_Latest_Alert_Displayed_For_ST1_Cndt2_Nextday_Carry_Forward_Scenario function",  "");
+        ReportUtil.report( true, "INFO", "-- Function -- Ending -- verify_And_Get_Latest_Alert_Displayed_For_Strategies function",  "");
 
         return new_Alert_Displayed;
     }

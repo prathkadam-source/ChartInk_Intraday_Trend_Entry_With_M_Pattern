@@ -97,11 +97,6 @@ public class BaseTest {
         options.addArguments("--disable-dev-shm-usage");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        // To run browser in headless mode
-        if ("true".equalsIgnoreCase(prop.getProperty("Run_Browser_In_Headless_Mode").trim())){
-            options.addArguments("--headless");
-        }
-
         driver= new ChromeDriver(options);
 
         // navigate to application and set the pace of script

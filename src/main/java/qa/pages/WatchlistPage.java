@@ -27,7 +27,7 @@ public class WatchlistPage extends BaseTest {
     public static final By WebElement_Selected_Watchlist_SubTab = By.xpath("//*[@href='/watchlist_dashboard' and contains(@class,'dark')]");
     public static final By WebElement_Choose_File_Button = By.xpath("(//*[ contains(@class,'button') ] [contains (text(), 'Select a file') ] )[1]");
     public static final By WebElement_Upload_Button = By.xpath("(//*[ contains(@class,'button') ] //*[contains (text(), 'Upload') ] )[1]");
-    public static final By WebElement_Empty_Watchlist_Button = By.xpath("//*[text()= 'Empty watchlist']");
+    public static final By WebElement_Empty_Watchlist_Button = By.xpath("//*[contains(@class,'cursor-pointer hidden md:flex')]//*[text()= 'Empty watchlist']");
     public static final By WebElement_Success_Message = By.xpath("//*[contains(@class,'success alert')]");
     //public static final By WebElement_NoDataAvailableInTable_Message = By.xpath("//*[contains(@class,'empty') and text()= 'No data available in table']");
     public static final By WebElement_NoStocksOnWatchlist_Message = By.xpath("//*[text()='No stocks on watchlist']");
@@ -131,8 +131,8 @@ public class WatchlistPage extends BaseTest {
             Watchlist_Url = prop.getProperty("ST2_Cndt_2_Watchlist_Url") + Watchlist_Url;
 
             //Updating NAME and Url for future use
-            Constants.ST2_CNDT2_CURRENT_RUN_WATCHLIST_NAME = Watchlist_Name;
-            Constants.ST2_CNDT2_CURRENT_RUN_WATCHLIST_URL = Watchlist_Url;
+//            Constants.ST2_CNDT2_CURRENT_RUN_WATCHLIST_NAME = Watchlist_Name;
+//            Constants.ST2_CNDT2_CURRENT_RUN_WATCHLIST_URL = Watchlist_Url;
 
         }catch (Exception e) {
 
@@ -177,7 +177,7 @@ public class WatchlistPage extends BaseTest {
 
             helper.safeClick(WebElement_Choose_File_Button);
             FileUploadWithRobot.uploadFile(File_Location);
-//            FileUploadWithRobot.uploadFile("C:\\Users\\prath\\IdeaProjects\\ChartInk_ST1_And_ST2_Combined_Project_New\\src\\main\\resources\\data\\runTime_Stocks_for_ST2_Cndt2.txt");
+//            FileUploadWithRobot.uploadFile("C:\\Users\\prath\\IdeaProjects\\ChartInk_ST1_And_ST2_Combined_Project_New\\src\\main\\resources\\data\\runTime_Stocks_for_watchlist.txt");
             // Wait to ensure file upload completes
 
             Thread.sleep(1000);
@@ -232,22 +232,15 @@ public class WatchlistPage extends BaseTest {
         return flag;
     }
 
-    public boolean empty_All_Watchlists_For_Strategy_2(String configFilePath) throws IOException {
+    public boolean empty_All_Watchlists_For_Strategies(String configFilePath) throws IOException {
 
-        ReportUtil.report(true, "INFO", "-- Function -- Starting -- empty_All_Watchlists_For_Strategy_2 function ", "");
+        ReportUtil.report(true, "INFO", "-- Function -- Starting -- empty_All_Watchlists_For_Strategies function ", "");
 
         String inputPath = configFilePath;
         String watchlist_Name = "";
         String watchlist_Url = "";
 
-        String ST2_Cndt2_Watchlist_Defaut_Url = prop.getProperty("ST2_Cndt_2_Watchlist_Url");
-
-        String ST2_Cndt3_watchlist_Name = prop.getProperty("ST2_Cndt3_Watchlist_Page_Name");
-        String ST2_Cndt3_watchlist_Url = prop.getProperty("ST2_Cndt3_Watchlist_Page_Url");
-
-        // If below string is true then need to clear data for watchlist till 12.55 PM only
-        String To_Consider_Previous_Day_Filtered_Stocks_For_Today =  prop.getProperty("to_Consider_Previous_Day_Filtered_Stocks_For_Today");
-        int Series_Count_of_Watchlist = 0;  // eg if watchlist na s is 'ST1_Cndt_1_Time_2_25_PM_S63' then get S63
+        String Watchlist_Defaut_Url = prop.getProperty("Watchlist_Defaut_Url");
 
         boolean flag= false;
 
@@ -266,62 +259,42 @@ public class WatchlistPage extends BaseTest {
             // Loop through properties and print key-value pairs
             int i = 1;
             for (String key : keys) {
-                // If below condition is true then need to clear data for ST2_Cndt2 watchlists till 12.55 PM only, mhence avoid series greater than S46
-                if (To_Consider_Previous_Day_Filtered_Stocks_For_Today.equals("true") && Integer.parseInt(key.split("_S")[1]) >= 46) {
-                    // Do nothing
-                    System.out.println("Watchlist " + i + ": " + watchlist_Name + " not deleting the previous day stocks as considering these stocks for today's validation  ");
+
+                String value = watchlist_prop.getProperty(key);
+                System.out.println("Property " + i + ": " + key + " = " + value);
+
+                watchlist_Name = key;
+                watchlist_Url = Watchlist_Defaut_Url + value;
+
+                this.navigate_to_Particular_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_1_Cndt_2_Watchlist, watchlist_Url, watchlist_Name);
+
+                if (this.isElement_NoStocksOnWatchlist_Message_Visible()) {
+                    System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
+                    ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
                 } else {
-                    String value = watchlist_prop.getProperty(key);
-                    System.out.println("Property " + i + ": " + key + " = " + value);
+                    this.click_Empty_Watchlist_Button();
+                    browserAlertHandler.click_Ok();
+                    Thread.sleep(500);
+                    ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
 
-                    watchlist_Name = key;
-                    watchlist_Url = ST2_Cndt2_Watchlist_Defaut_Url + value;
-
-                    this.navigate_to_Particular_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE, watchlist_Url, watchlist_Name);
-
-                    if (this.isElement_NoStocksOnWatchlist_Message_Visible()) {
-                        System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
-                        ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
-                    } else {
-                        this.click_Empty_Watchlist_Button();
-                        browserAlertHandler.click_Ok();
-                        Thread.sleep(500);
-                        ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
-
-                    }
+                }
                 }
                 i++;
-            }
 
             // Close the file stream
             fis.close();
 
-            // Empty ST2_Cndt3 watchlist
-            watchlist_Name = ST2_Cndt3_watchlist_Name;
-            watchlist_Url = ST2_Cndt3_watchlist_Url;
-
-            this.navigate_to_Particular_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE, watchlist_Url, watchlist_Name);
-            if (this.isElement_NoStocksOnWatchlist_Message_Visible()){
-                System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
-                ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
-            }else {
-                this.click_Empty_Watchlist_Button();
-                browserAlertHandler.click_Ok();
-                Thread.sleep(500);
-                ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
-
-            }
-
         } catch (Exception e) {
 
-            System.out.println("empty_All_Watchlists_For_Strategy_2: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "empty_All_Watchlists_For_Strategy_2, ",  e.getMessage());
+            System.out.println("empty_All_Watchlists_For_Strategies: " + e.getMessage());
+            ReportUtil.report( false, "FAIL", "empty_All_Watchlists_For_Strategies, ",  e.getMessage());
         }
 
-        ReportUtil.report(true, "INFO", "-- Function -- Ending -- empty_All_Watchlists_For_Strategy_2 function ", "");
+        ReportUtil.report(true, "INFO", "-- Function -- Ending -- empty_All_Watchlists_For_Strategies function ", "");
 
         return flag;
     }
+
 
     public void delete_Stock_From_Watchlist(String Tab_Name, String Watchlist_Name, String Watchlist_Url , String StockName) throws IOException {
 
@@ -405,75 +378,97 @@ public class WatchlistPage extends BaseTest {
         ReportUtil.report(true, "INFO", "-- Function -- Ending -- delete_Stock_From_Watchlist function ","" );
     }
 
-    public boolean empty_ST1_Cndt2_Watchlists_From_1_PM_Onwards (String configFilePath) throws IOException {
+//    public boolean empty_All_Watchlists_For_Strategies(String configFilePath) throws IOException {
+//
+//        ReportUtil.report(true, "INFO", "-- Function -- Starting -- empty_All_Watchlists_For_Strategies function ", "");
+//
+//        String inputPath = configFilePath;
+//        String watchlist_Name = "";
+//        String watchlist_Url = "";
+//
+//        String ST2_Cndt2_Watchlist_Defaut_Url = prop.getProperty("ST2_Cndt_2_Watchlist_Url");
+//
+//        String ST2_Cndt3_watchlist_Name = prop.getProperty("ST2_Cndt3_Watchlist_Page_Name");
+//        String ST2_Cndt3_watchlist_Url = prop.getProperty("ST2_Cndt3_Watchlist_Page_Url");
+//
+//        // If below string is true then need to clear data for watchlist till 12.55 PM only
+//        String To_Consider_Previous_Day_Filtered_Stocks_For_Today =  prop.getProperty("to_Consider_Previous_Day_Filtered_Stocks_For_Today");
+//        int Series_Count_of_Watchlist = 0;  // eg if watchlist na s is 'ST1_Cndt_1_Time_2_25_PM_S63' then get S63
+//
+//        boolean flag= false;
+//
+//        try {
+//            FileInputStream fis = new FileInputStream(inputPath);
+//            Properties watchlist_prop = new Properties();
+//            watchlist_prop.load(fis);
+//
+//            // Get all property keys
+//            Set<String> keys = watchlist_prop.stringPropertyNames();
+//
+//            // Get total count of properties
+//            int count = keys.size();
+//            System.out.println("Total properties: " + count);
+//
+//            // Loop through properties and print key-value pairs
+//            int i = 1;
+//            for (String key : keys) {
+//                // If below condition is true then need to clear data for ST2_Cndt2 watchlists till 12.55 PM only, mhence avoid series greater than S46
+//                if (To_Consider_Previous_Day_Filtered_Stocks_For_Today.equals("true") && Integer.parseInt(key.split("_S")[1]) >= 46) {
+//                    // Do nothing
+//                    System.out.println("Watchlist " + i + ": " + watchlist_Name + " not deleting the previous day stocks as considering these stocks for today's validation  ");
+//                } else {
+//                    String value = watchlist_prop.getProperty(key);
+//                    System.out.println("Property " + i + ": " + key + " = " + value);
+//
+//                    watchlist_Name = key;
+//                    watchlist_Url = ST2_Cndt2_Watchlist_Defaut_Url + value;
+//
+//                    this.navigate_to_Particular_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE, watchlist_Url, watchlist_Name);
+//
+//                    if (this.isElement_NoStocksOnWatchlist_Message_Visible()) {
+//                        System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
+//                        ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
+//                    } else {
+//                        this.click_Empty_Watchlist_Button();
+//                        browserAlertHandler.click_Ok();
+//                        Thread.sleep(500);
+//                        ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
+//
+//                    }
+//                }
+//                i++;
+//            }
+//
+//            // Close the file stream
+//            fis.close();
+//
+//            // Empty ST2_Cndt3 watchlist
+//            watchlist_Name = ST2_Cndt3_watchlist_Name;
+//            watchlist_Url = ST2_Cndt3_watchlist_Url;
+//
+//            this.navigate_to_Particular_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE, watchlist_Url, watchlist_Name);
+//            if (this.isElement_NoStocksOnWatchlist_Message_Visible()){
+//                System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
+//                ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
+//            }else {
+//                this.click_Empty_Watchlist_Button();
+//                browserAlertHandler.click_Ok();
+//                Thread.sleep(500);
+//                ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
+//
+//            }
+//
+//        } catch (Exception e) {
+//
+//            System.out.println("empty_All_Watchlists_For_Strategies: " + e.getMessage());
+//            ReportUtil.report( false, "FAIL", "empty_All_Watchlists_For_Strategies, ",  e.getMessage());
+//        }
+//
+//        ReportUtil.report(true, "INFO", "-- Function -- Ending -- empty_All_Watchlists_For_Strategies function ", "");
+//
+//        return flag;
+//    }
 
-        ReportUtil.report(true, "INFO", "-- Function -- Starting -- empty_ST1_Cndt2_Watchlists_From_1_PM_Onwards function ", "");
-
-        String inputPath = configFilePath;
-        String watchlist_Name = "";
-        String watchlist_Url = "";
-
-        String ST1_Cndt2_Watchlist_Defaut_Url = prop.getProperty("ST1_Cndt_2_Watchlist_Url");
-
-        // If below string is true then need to clear data for watchlist till 12.55 PM only
-        String To_Consider_Previous_Day_Filtered_Stocks_For_Today =  prop.getProperty("to_Consider_Previous_Day_Filtered_Stocks_For_Today");
-        int Series_Count_of_Watchlist = 0;  // eg if watchlist na s is 'ST1_Cndt_1_Time_2_25_PM_S63' then get S63
-
-        boolean flag= false;
-
-        try {
-            FileInputStream fis = new FileInputStream(inputPath);
-            Properties watchlist_prop = new Properties();
-            watchlist_prop.load(fis);
-
-            // Get all property keys
-            Set<String> keys = watchlist_prop.stringPropertyNames();
-
-            // Get total count of properties
-            int count = keys.size();
-            System.out.println("Total properties: " + count);
-
-            // Loop through properties and print key-value pairs
-            int i = 1;
-            for (String key : keys) {
-                // If below condition is true then need to clear data for ST1_Cndt2 watchlists from 1 Pm onwards,
-                if (To_Consider_Previous_Day_Filtered_Stocks_For_Today.equals("true") && Integer.parseInt(key.split("_S")[1]) >= 46) {
-
-                    String value = watchlist_prop.getProperty(key);
-                    System.out.println("Property " + i + ": " + key + " = " + value);
-
-                    watchlist_Name = key;
-                    watchlist_Url = ST1_Cndt2_Watchlist_Defaut_Url + value;
-
-                    this.navigate_to_Particular_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE, watchlist_Url, watchlist_Name);
-
-                    if (this.isElement_NoStocksOnWatchlist_Message_Visible()) {
-                        System.out.println("Watchlist " + i + ": " + watchlist_Name + " is already empty ");
-                        ReportUtil.report(true, "INFO", "Watchlist " + i + ": " + watchlist_Name + " is already empty ", "");
-                    } else {
-                        this.click_Empty_Watchlist_Button();
-                        browserAlertHandler.click_Ok();
-                        Thread.sleep(500);
-                        ReportUtil.report(this.isElement_NoStocksOnWatchlist_Message_Visible(), "PASS", "Watchlist " + i + ": " + watchlist_Name + " is empty now", "");
-
-                    }
-                }
-                i++;
-            }
-
-            // Close the file stream
-            fis.close();
-
-        } catch (Exception e) {
-
-            System.out.println("empty_ST1_Cndt2_Watchlists_From_1_PM_Onwards: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "empty_ST1_Cndt2_Watchlists_From_1_PM_Onwards, ",  e.getMessage());
-        }
-
-        ReportUtil.report(true, "INFO", "-- Function -- Ending -- empty_ST1_Cndt2_Watchlists_From_1_PM_Onwards function ", "");
-
-        return flag;
-    }
 
     //    public boolean file_Upload_With_AutoIt_Exe(String AutoIt_Exe_Location_For_Watchlist_Stocks){
 //
