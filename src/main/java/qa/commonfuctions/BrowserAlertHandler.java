@@ -3,7 +3,6 @@ package qa.commonfuctions;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.PageFactory;
 import qa.base.BaseTest;
-import qa.helperClass.SeleniumHelper;
 import qa.utils.ReportUtil;
 
 public class BrowserAlertHandler extends BaseTest {

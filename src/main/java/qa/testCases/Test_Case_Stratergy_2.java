@@ -40,22 +40,36 @@ public class Test_Case_Stratergy_2 extends BaseTest {
                 ReportUtil.report(true, "INFO", "-- STEP 1 -- Navigate to ST2_CNDT1_Alerts page and get an alerts and update them to ST2_CNDT2 watchlist", "");
 
                 // If new alert displayed for strategy : ST1_Cndt1 then add it to watchlist of strategy : ST1_Cndt2
-                if (alertPage.verify_And_Get_Latest_Alert_Displayed_For_Strategies("ST2_Cndt_1 ",
+                if (alertPage.verify_And_Get_Latest_Alert_Displayed_For_Strategies(Constants.ST2_CONDITION_1,
                         Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION)) {
 
                     Alerts_Stock_Names = Constants.LATEST_ALERT_STOCK_NAMES;
                     latest_Alert_TimeStamp = Constants.LATEST_ALERT_TIMESTAMP;
+                    String[] stocks;
 
                     // Condition 2
                     // Update Stock Alert to textfile
                     FileAndFolderFunctions.Overwrite_To_Text_File(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST, Alerts_Stock_Names);
 
+                    //Add Stocks to watchlist
+
+                    // Create an array to pass to delete_Stock_From_Watchlist function
+                    if (Alerts_Stock_Names.contains(",")) {
+                        stocks = Alerts_Stock_Names.split(",");
+                    }else {
+                        stocks = new String[]{Alerts_Stock_Names};
+                    }
+
+                    // add Stocks from "ST1_Cndt_1_" to watchlist of ST1_Cndt2
+                    watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist,
+                            ST2_CNDT2_Watchlist_Name,ST2_CNDT2_Watchlist_Url,stocks);
+
                     // Get and update Watchlist_Url_For_ST1_CNDT2_Statergy
-                    watchlistPage.navigate_to_Particular_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist,
-                            ST2_CNDT2_Watchlist_Url,ST2_CNDT2_Watchlist_Name);
+                  //  watchlistPage.navigate_to_Particular_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist,
+                       //     ST2_CNDT2_Watchlist_Url,ST2_CNDT2_Watchlist_Name);
 
                     //Upload Stocks text file
-                    watchlistPage.upload_Stock_List_TextFile_Using_Robot(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST);
+                  //  watchlistPage.upload_Stock_List_TextFile_Using_Robot(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST);
 
                     // Update Stock Alerts to  output textfile for end of the day validation
                     FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES,

@@ -41,9 +41,9 @@ public class AlertPage extends BaseTest {
         Thread.sleep(1000);
     }
     public void click_On_Popup_Ok_Button() throws InterruptedException {
-        Thread.sleep(500);
+        helper.safeFindElement(WebElement_PopUp_Ok_Button,2);
         helper.safeClick(WebElement_PopUp_Ok_Button);
-        Thread.sleep(500);
+        Thread.sleep(2000);
     }
 
     public boolean verify_And_Get_Latest_Alert_Displayed_For_Strategies(String TextMessage , String TabNameToNavigate) throws InterruptedException {
@@ -54,6 +54,7 @@ public class AlertPage extends BaseTest {
         String alerts_Stock_Data = "";
         String latest_Alert_TimeStamp = "";
         String latest_Alert_Stock_Names = "";
+        String default_Alert_Time_Stamp = "";
 
         try {
 
@@ -73,11 +74,23 @@ public class AlertPage extends BaseTest {
                 latest_Alert_TimeStamp = this.get_Latest_Alert_TimeStamp(alerts_Stock_Data);
                 latest_Alert_Stock_Names = this.get_Latest_Alert_Stock_Names(alerts_Stock_Data);
 
+                if (TextMessage.contains(Constants.ST1_CONDITION_1)){
+                    default_Alert_Time_Stamp = Constants.ST1_DEFAULT_ALERT_TIMESTAMP;
+                }else if(TextMessage.contains(Constants.ST2_CONDITION_1)){
+                    default_Alert_Time_Stamp = Constants.ST2_DEFAULT_ALERT_TIMESTAMP;
+                }
+
                 // Verify Alert is latest or not
-                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,Constants.DEFAULT_ALERT_TIMESTAMP)){
+                if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,default_Alert_Time_Stamp)){
                     new_Alert_Displayed = true;
+
                     //updating details as gloabl constant
-                    Constants.DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    if (TextMessage.contains(Constants.ST1_CONDITION_1)){
+                        Constants.ST1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    }else if(TextMessage.contains(Constants.ST2_CONDITION_1)){
+                        Constants.ST2_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    }
+
                     Constants.LATEST_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
                     Constants.LATEST_ALERT_STOCK_NAMES= latest_Alert_Stock_Names ;
 
@@ -118,12 +131,12 @@ public class AlertPage extends BaseTest {
             String[] lines = Stock_Data.split("\\n");
 
             // Example Output: Tue Jul 8 2025, 1:05
-            String[] date_parts = lines[0].split("(?i)\\s*(AM|PM)\\s*");
+            String[] date_parts = lines[1].split("(?i)\\s*(AM|PM)\\s*");
 
             final_Date = date_parts[0].replaceFirst(",", "").replaceFirst(",", "");
 
             //To construct final date
-            if (lines[0].contains(" AM")){
+            if (lines[1].contains(" AM")){
                 final_Date = final_Date + " AM";
             }else {
                 final_Date = final_Date + " PM";
@@ -158,7 +171,7 @@ public class AlertPage extends BaseTest {
             String[] lines = Stock_Data.split("\\n");
 
             // Example Output: HINDUNILVR, KALYANKJIL
-            String[] parts = lines[0].split("\\t");
+            String[] parts = lines[1].split("\\t");
             final_Stocks = parts[2];
 
             System.out.println("Latest alert stock names : "+ final_Stocks);

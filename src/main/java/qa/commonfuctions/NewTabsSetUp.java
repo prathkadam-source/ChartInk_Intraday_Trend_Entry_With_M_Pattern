@@ -168,6 +168,13 @@ public class NewTabsSetUp extends BaseTest {
                     browser_Refresh();
                     Thread.sleep(1000);
                     break;
+
+                case Constants.TAB_DEFAULT_WATCHLIST_PAGE:
+                    this.switchToTab(Integer.parseInt(RunTimeDataStore.TabsName.getGlobal(tabName)));
+                    this.verifySelectedTab(Constants.WEBPAGE_WATCHLIST, WatchlistPage.WebElement_Selected_Watchlist_SubTab,"");
+                    browser_Refresh();
+                    Thread.sleep(1000);
+                    break;
             }
 
         }
@@ -219,6 +226,11 @@ public class NewTabsSetUp extends BaseTest {
             this.setUrl(prop.getProperty("ST2_Cndt2_Watchlist_Page_Url"));
             this.verifySelectedTab(Constants.WEBPAGE_WATCHLIST, WatchlistPage.WebElement_Watchlist_Name_Link, Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist);
             RunTimeDataStore.TabsName.putGlobal(Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist,"4");
+
+            this.switchToTab(5);
+            this.setUrl(prop.getProperty("Default_Watchlist_Page_Url"));
+            this.verifySelectedTab(Constants.WEBPAGE_WATCHLIST, WatchlistPage.WebElement_Selected_Watchlist_SubTab, "");
+            RunTimeDataStore.TabsName.putGlobal(Constants.TAB_DEFAULT_WATCHLIST_PAGE,"5");
 
         } catch (Exception e) {
 

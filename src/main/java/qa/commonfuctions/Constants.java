@@ -23,7 +23,6 @@ public class Constants {
     public static final String TAB_WATCHLISTPAGE_NAME_ST_1_Cndt_2_Watchlist = "Buy_Side_Stocks_For_Intraday";
     public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION = "Scan_Sell_Trades_+Ve_Spertrnd_upd for SMA crossover MACD zero line ALL FUTURES";
     public static final String TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday";
-
     public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION ="ST2_Cndt2_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
 
     public static final String TAB_DEFAULT_WATCHLIST_PAGE = "Default_Watchlist";
@@ -82,7 +81,11 @@ public class Constants {
 
     // <editor-fold desc="ST1_CNDT1 variables ">
     // Setting up date for 1st default date time comparison
-    public static String DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
+    public static String ST1_CONDITION_1 = "ST1_Cndt_1";
+    public static String ST2_CONDITION_1 = "ST2_Cndt_1";
+    public static String ST1_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
+    public static String ST2_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
+
     public static String LATEST_ALERT_TIMESTAMP = "";
     public static String LATEST_ALERT_STOCK_NAMES = "";
 
