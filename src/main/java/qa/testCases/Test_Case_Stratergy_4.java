@@ -11,7 +11,7 @@ import qa.utils.ReportUtil;
 
 import java.io.IOException;
 
-public class Test_Case_Stratergy_3 extends BaseTest {
+public class Test_Case_Stratergy_4 extends BaseTest {
 
     LoginPage loginPage = new LoginPage();
     NewTabsSetUp newTabsSetUp = new NewTabsSetUp();
@@ -20,28 +20,28 @@ public class Test_Case_Stratergy_3 extends BaseTest {
 
     WatchlistPage watchlistPage = new WatchlistPage();
 
-    public void Sell_Trades_From_Negative_Supertrend_Of_Sell_Trades() throws InterruptedException {
+    public void Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades() throws InterruptedException {
 
-        ReportUtil.report( true, "INFO", "-- Test case 3 -- Starting -- Sell_Trades_From_Negative_SupertrendOf_Sell_Trades",  "");
+        ReportUtil.report( true, "INFO", "-- Test case 4 -- Starting -- Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades",  "");
 
         // <editor-fold desc="Variables">
 
         String Alerts_Stock_Names = "";
         String latest_Alert_TimeStamp = "";
 
-        String ST3_CNDT2_Watchlist_Name = prop.getProperty("ST3_Cndt2_Watchlist_Page_Name").trim();
-        String ST3_CNDT2_Watchlist_Url = prop.getProperty("ST3_Cndt2_Watchlist_Page_Url").trim();
+        String ST4_CNDT2_Watchlist_Name = prop.getProperty("ST4_Cndt2_Watchlist_Page_Name").trim();
+        String ST4_CNDT2_Watchlist_Url = prop.getProperty("ST4_Cndt2_Watchlist_Page_Url").trim();
 
         // </editor-fold>
 
         try {
 
-                // Step 1: Navigate to  ST1_CNDT1_Alerts tab and get an alerts and update them to ST3_CNDT1 watchlist
-                ReportUtil.report(true, "INFO", "-- STEP 1 -- Navigate to ST3_CNDT1_Alerts page and get an alerts and update them to ST3_CNDT2 watchlist", "");
+                // Step 1: Navigate to  ST4_CNDT1_Alerts tab and get an alerts and update them to ST4_CNDT2 watchlist
+                ReportUtil.report(true, "INFO", "-- STEP 1 -- Navigate to ST4_CNDT1_Alerts page and get an alerts and update them to ST4_CNDT2 watchlist", "");
 
-                // If new alert displayed for strategy : ST3_Cndt1 then add it to watchlist of strategy : ST3_Cndt2
-                if (alertPage.verify_And_Get_Latest_Alert_Displayed_For_Strategies(Constants.ST3_CONDITION_1,
-                        Constants.TAB_ALERTPAGE_NAME_ST_3_FIRST_CONDITION)) {
+                // If new alert displayed for strategy : ST4_Cndt1 then add it to watchlist of strategy : ST4_Cndt2
+                if (alertPage.verify_And_Get_Latest_Alert_Displayed_For_Strategies(Constants.ST4_CONDITION_1,
+                        Constants.TAB_ALERTPAGE_NAME_ST_4_FIRST_CONDITION)) {
 
                     Alerts_Stock_Names = Constants.LATEST_ALERT_STOCK_NAMES;
                     latest_Alert_TimeStamp = Constants.LATEST_ALERT_TIMESTAMP;
@@ -60,9 +60,9 @@ public class Test_Case_Stratergy_3 extends BaseTest {
                         stocks = new String[]{Alerts_Stock_Names};
                     }
 
-                    // add Stocks from "ST3_Cndt_1_" to watchlist of ST1_Cndt2
-                    watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_3_Cndt_2_Watchlist,
-                            ST3_CNDT2_Watchlist_Name,ST3_CNDT2_Watchlist_Url,stocks);
+                    // add Stocks from "ST4_Cndt_1_" to watchlist of ST1_Cndt2
+                    watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_4_Cndt_2_Watchlist,
+                            ST4_CNDT2_Watchlist_Name,ST4_CNDT2_Watchlist_Url,stocks);
 
                     // Get and update Watchlist_Url_For_ST1_CNDT2_Statergy
                   //  watchlistPage.navigate_to_Particular_Watchlist(Constants.TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist,
@@ -72,19 +72,19 @@ public class Test_Case_Stratergy_3 extends BaseTest {
                   //  watchlistPage.upload_Stock_List_TextFile_Using_Robot(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST);
 
                     // Update Stock Alerts to  output textfile for end of the day validation
-                    FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES,
-                            Constants.ACTION_STOCKS_ADDED, ST3_CNDT2_Watchlist_Name,
-                            ST3_CNDT2_Watchlist_Url, Alerts_Stock_Names);
+                    FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES,
+                            Constants.ACTION_STOCKS_ADDED, ST4_CNDT2_Watchlist_Name,
+                            ST4_CNDT2_Watchlist_Url, Alerts_Stock_Names);
 
                 }
 
              }catch (IOException e) {
 
             System.out.println("Test case 2 Sell_Trades: " + e.getMessage());
-            ReportUtil.report( false, "FAIL", "Test case 3 Sell_Trades_From_Negative_SupertrendOf_Sell_Trades, ",  e.getMessage());
+            ReportUtil.report( false, "FAIL", "Test case 4 Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades, ",  e.getMessage());
         }
 
-        ReportUtil.report( true, "INFO", "-- Test case 3 -- Ending -- Sell_Trades_From_Negative_SupertrendOf_Sell_Trades",  "");
+        ReportUtil.report( true, "INFO", "-- Test case 4 -- Ending -- Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades",  "");
 
     }
 

@@ -28,6 +28,7 @@ public class Sub_Test_Case extends BaseTest {
     Test_Case_Stratergy_1 test_Case_Stratergy_1 = new Test_Case_Stratergy_1();
     Test_Case_Stratergy_2 test_Case_Stratergy_2 = new Test_Case_Stratergy_2();
     Test_Case_Stratergy_3 test_Case_Stratergy_3 = new Test_Case_Stratergy_3();
+    Test_Case_Stratergy_4 test_Case_Stratergy_4 = new Test_Case_Stratergy_4();
 
 
     public void Prerequisite_To_Login_And_Set_Sub_Tabs_Urls() throws InterruptedException {
@@ -59,6 +60,11 @@ public class Sub_Test_Case extends BaseTest {
             // this file is use to record the out details
             Constants.TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
                     Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES);
+
+            // Textfile to Log updates when ST4_Cndt2-watchlists are updated for alerts received for ST4_Cndt1
+            // this file is use to record the out details
+            Constants.TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES);
 
             // </editor-fold>
             // To empty all watchlist for Strategies
@@ -113,7 +119,8 @@ public class Sub_Test_Case extends BaseTest {
 
                 test_Case_Stratergy_1.Buy_TradesFrom_Positive_Supertrend_Of_Buy_Trades();
                 test_Case_Stratergy_2.Sell_Trades_From_Positive_Supertrend_Of_Sell_Trades();
-                test_Case_Stratergy_3.Sell_Trades_From_Negative_SupertrendOf_Sell_Trades();
+                test_Case_Stratergy_3.Sell_Trades_From_Negative_Supertrend_Of_Sell_Trades();
+                test_Case_Stratergy_4.Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades();
 
                 // To ensure for loop starts at the next multiple of 5 minutes 25 seconds,
                 // such as 9:25:05, even if the program is started at 9:23:00

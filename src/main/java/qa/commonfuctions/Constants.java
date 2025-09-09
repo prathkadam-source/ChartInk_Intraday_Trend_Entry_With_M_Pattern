@@ -25,7 +25,8 @@ public class Constants {
     public static final String TAB_WATCHLISTPAGE_NAME_ST_2_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday_From_Positive_Supertrend_Of_Sell_Trades";
     public static final String TAB_ALERTPAGE_NAME_ST_3_FIRST_CONDITION = "ST2_Cndt3_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins_-ve_Supertrend";
     public static final String TAB_WATCHLISTPAGE_NAME_ST_3_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday_From_Negative_Supertrend_Of_Sell_Trades";
-
+    public static final String TAB_ALERTPAGE_NAME_ST_4_FIRST_CONDITION = "Super_ST2_Cndt3_Scan_For_*BUY*_Trades_-Ve_Supertrend_updated";
+    public static final String TAB_WATCHLISTPAGE_NAME_ST_4_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday_From_Negative_Supertrend_Of_Buy_Trades";
 
 
     public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION ="ST2_Cndt2_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
@@ -46,6 +47,7 @@ public class Constants {
     public static String TEXTFILE_PATH_ST1_CNDT2_WATCHLIST_UPDATES = "ST1_Cndt2_Watchlist_Updates.txt";
     public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES = "ST2_Cndt2_Watchlist_Updates.txt";
     public static String TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES = "ST3_Cndt2_Watchlist_Updates.txt";
+    public static String TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES = "ST4_Cndt2_Watchlist_Updates.txt";
     public static String TEXTFILE_PATH_FOR_COPY_PASTED_ALERTS_OUTPUT = System.getProperty("user.dir") + "/src/main/resources/data/copy_Pasted_Alerts_Output.txt";
 
     public static String TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST = System.getProperty("user.dir") + "/src/main/resources/data/runTime_Stocks_for_watchlist.txt";
@@ -90,9 +92,11 @@ public class Constants {
     public static String ST1_CONDITION_1 = "ST1_Cndt_1";
     public static String ST2_CONDITION_1 = "ST2_Cndt_1";
     public static String ST3_CONDITION_1 = "ST3_Cndt_1";
+    public static String ST4_CONDITION_1 = "ST4_Cndt_1";
     public static String ST1_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
     public static String ST2_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
     public static String ST3_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
+    public static String ST4_DEFAULT_ALERT_TIMESTAMP = DateTimeFunctions.get_Now_Date_And_Day_In_Chartink_Time_Format() + ", 09:10 AM";  // Example format: "Tue Jul 8 2025, 9:10 am";
 
     public static String LATEST_ALERT_TIMESTAMP = "";
     public static String LATEST_ALERT_STOCK_NAMES = "";
