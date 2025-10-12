@@ -23,6 +23,10 @@ public class Constants {
     public static final String TAB_ALERTPAGE_NAME_ST_1_FIRST_CONDITION_PART_B = "ST1_Cndt 1 - Part B _Sell Breakout Along with Condition";
     public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION = "ST1_Cndt 2 - Sell Side Breakout of 2 Red Histo Candle with Increasing Sma of Histo";
 
+    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_A = "ST2_Cndt 1 _ Part_A_5 min of 2 Green Histo Candles with Decreasing Sma of Histo";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_B = "ST2_Cndt 1 _ Part_B_Continuous Buy Breakout";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION = "ST2_Cndt 2 - Buy Side Breakout";
+
     // </editor-fold>
 
     // <editor-fold desc="SubTabDetails">
@@ -36,7 +40,7 @@ public class Constants {
     public static final String TAB_WATCHLISTPAGE_NAME_ST_4_Cndt_2_Watchlist = "1_Sell_Side_Stocks_For_Intraday_From_Negative_Supertrend_Of_Buy_Trades";
 
 
-    public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION ="ST2_Cndt2_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
+//    public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION ="ST2_Cndt2_Scan_For_Sell_Trades_Histo_Top_out_Stocks_5_Mins";
 
     public static final String TAB_DEFAULT_WATCHLIST_PAGE = "Default_Watchlist";
     public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION_NEXTDAY_CARRY_FORWARD ="ST_1_Second_Condition_For_NextDay_Carry_Forward_Scenario";
@@ -54,6 +58,9 @@ public class Constants {
     public static String TEXTFILE_PATH_ST1_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_A = "ST1_Cndt2_Watchlist_Updates_From_Cndt_1_Part_A.txt";
     public static String TEXTFILE_PATH_ST1_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_B = "ST1_Cndt2_Watchlist_Updates_From_Cndt_1_Part_B.txt";
     public static String TEXTFILE_PATH_ST1_CNDT3_WATCHLIST_UPDATES = "ST1_Cndt3_Watchlist_Updates.txt";
+    public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_A = "ST2_Cndt2_Watchlist_Updates_From_Cndt_1_Part_A.txt";
+    public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_B = "ST2_Cndt2_Watchlist_Updates_From_Cndt_1_Part_B.txt";
+    public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = "ST2_Cndt3_Watchlist_Updates.txt";
 
 
     public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES = "ST2_Cndt2_Watchlist_Updates.txt";
@@ -86,7 +93,7 @@ public class Constants {
     //Text file path
 
 
-    public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = "";
+//    public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = "";
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_FOR_INVALID_CONDITION = "";
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_STOCKS_REMOVED_TO_AVOID_DUPLICATE_ALERTS = "";
     public static String TEXTFILE_PATH_ST1_CNDT2_ALERTS = "";
@@ -105,6 +112,7 @@ public class Constants {
     public static String ST1_CONDITION_2 = "ST1_Cndt_2";
 
     public static String ST1_CNDT_1_TIME = "ST1_Cndt_1_Time_";
+    public static String ST2_CNDT_2_TIME = "ST2_Cndt_1_Time_";
 
     public static String ST1_CONDITION_1 = "ST2_Cndt_1";
     public static String ST2_CONDITION_1 = "ST2_Cndt_1";

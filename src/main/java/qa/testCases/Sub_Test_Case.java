@@ -57,23 +57,17 @@ public class Sub_Test_Case extends BaseTest {
             Constants.TEXTFILE_PATH_ST1_CNDT3_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
                     Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST1_CNDT3_WATCHLIST_UPDATES);
 
-
-            //----------------------------------------
-
             // Textfile to Log updates when ST2_Cndt2-watchlists are updated for alerts received for ST2_Cndt1
             // this file is use to record the out details
-            Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
-                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES);
+            Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_A = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_A);
 
-            // Textfile to Log updates when ST3_Cndt2-watchlists are updated for alerts received for ST3_Cndt1
-            // this file is use to record the out details
-            Constants.TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
-                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST3_CNDT2_WATCHLIST_UPDATES);
+            Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_B = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1_PART_B);
 
-            // Textfile to Log updates when ST4_Cndt2-watchlists are updated for alerts received for ST4_Cndt1
-            // this file is use to record the out details
-            Constants.TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
-                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST4_CNDT2_WATCHLIST_UPDATES);
+            Constants.TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES);
+            //----------------------------------------
 
             // </editor-fold>
             // To empty all watchlist for Strategies
@@ -126,8 +120,8 @@ public class Sub_Test_Case extends BaseTest {
                 System.out.println(Interval);
                 ReportUtil.report(true, "INFO", Interval, "");
 
-                test_Case_Stratergy_1.Sell_Trades_From_Logic_Two_Red_Histo_Candles();
-//                test_Case_Stratergy_2.Sell_Trades_From_Positive_Supertrend_Of_Sell_Trades();
+                //test_Case_Stratergy_1.Sell_Trades_From_Logic_Two_Red_Histo_Candles();
+                test_Case_Stratergy_2.Buy_Trades_From_Logic_Two_Green_Histo_Candles();
 //                test_Case_Stratergy_3.Sell_Trades_From_Negative_Supertrend_Of_Sell_Trades();
 //                test_Case_Stratergy_4.Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades();
 

@@ -162,6 +162,27 @@ public class NewTabsSetUp extends BaseTest {
                     this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION );
                     break;
 
+                case Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_A:
+                    this.switchToTab(Integer.parseInt(RunTimeDataStore.TabsName.getGlobal(tabName)));
+                    browser_Refresh();
+                    Thread.sleep(1000);
+                    this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_A );
+                    break;
+
+                case Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_B:
+                    this.switchToTab(Integer.parseInt(RunTimeDataStore.TabsName.getGlobal(tabName)));
+                    browser_Refresh();
+                    Thread.sleep(1000);
+                    this.verifySelectedTab(Constants.WEBPAGE_WATCHLIST, WatchlistPage.WebElement_Watchlist_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_B);
+                    break;
+
+                case Constants.TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION:
+                    this.switchToTab(Integer.parseInt(RunTimeDataStore.TabsName.getGlobal(tabName)));
+                    browser_Refresh();
+                    Thread.sleep(1000);
+                    this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION );
+                    break;
+
                 case Constants.TAB_DEFAULT_WATCHLIST_PAGE:
                     this.switchToTab(Integer.parseInt(RunTimeDataStore.TabsName.getGlobal(tabName)));
                     browser_Refresh();
@@ -219,6 +240,21 @@ public class NewTabsSetUp extends BaseTest {
             this.setUrl(prop.getProperty("Dashboard_Watchlist_Page_Url"));
             this.verifySelectedTab(Constants.WEBPAGE_WATCHLIST, WatchlistPage.WebElement_Selected_Watchlist_SubTab, "");
             RunTimeDataStore.TabsName.putGlobal(Constants.TAB_DEFAULT_WATCHLIST_PAGE,"4");
+
+            this.switchToTab(5);
+            this.setUrl(prop.getProperty("ST2_Cndt1_Part_A_Alert_Page_Url"));
+            this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_A);
+            RunTimeDataStore.TabsName.putGlobal(Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_A,"5");
+
+            this.switchToTab(6);
+            this.setUrl(prop.getProperty("ST2_Cndt1_Part_B_Alert_Page_Url"));
+            this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_B);
+            RunTimeDataStore.TabsName.putGlobal(Constants.TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION_PART_B,"6");
+
+            this.switchToTab(7);
+            this.setUrl(prop.getProperty("ST2_Cndt2_Alert_Page_Url"));
+            this.verifySelectedTab(Constants.WEBPAGE_ALERT,AlertPage.WebElement_Alert_Name_Link, Constants.TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION);
+            RunTimeDataStore.TabsName.putGlobal(Constants.TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION,"7");
 
         } catch (Exception e) {
 
