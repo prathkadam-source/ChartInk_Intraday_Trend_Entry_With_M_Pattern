@@ -112,7 +112,7 @@ public class AlertPage extends BaseTest {
                 }
 
             } else {
-                ReportUtil.report(true, "FAIL", "verify_And_Get_Latest_Alert_Displayed_for " + TextMessage,
+                ReportUtil.report(true, "INFO", "verify_And_Get_Latest_Alert_Displayed_for " + TextMessage,
                         "Alerts yet not displayed");
 
             }

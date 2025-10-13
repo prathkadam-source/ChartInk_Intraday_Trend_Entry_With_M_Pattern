@@ -112,9 +112,9 @@ public class Constants {
     public static String ST1_CONDITION_2 = "ST1_Cndt_2";
 
     public static String ST1_CNDT_1_TIME = "ST1_Cndt_1_Time_";
-    public static String ST2_CNDT_2_TIME = "ST2_Cndt_1_Time_";
+    public static String ST2_CNDT_2_TIME = "ST2_Cndt_2_Time_";
 
-    public static String ST1_CONDITION_1 = "ST2_Cndt_1";
+    public static String ST1_CONDITION_1 = "ST1_Cndt_1";
     public static String ST2_CONDITION_1 = "ST2_Cndt_1";
     public static String ST3_CONDITION_1 = "ST3_Cndt_1";
     public static String ST4_CONDITION_1 = "ST4_Cndt_1";

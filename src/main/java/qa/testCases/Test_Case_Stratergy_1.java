@@ -61,7 +61,7 @@ public class Test_Case_Stratergy_1 extends BaseTest {
             String Current_Watchlist_Name = "";
             String Current_Watchlist_Url = "";
 
-            String ST1_Cndt3_Watchlist_Name = prop.getProperty("ST1_Cndt3_Watchlist_Name");
+            String ST1_Cndt3_Watchlist_Name = prop.getProperty("ST1_Cndt_3_Watchlist_Name");
             String ST1_Cndt_3_Watchlist_Url = prop.getProperty("ST1_Cndt_3_Watchlist_Url");
         // </editor-fold>
 
