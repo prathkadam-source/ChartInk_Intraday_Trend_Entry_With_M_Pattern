@@ -18,18 +18,11 @@ public class ArrayFunctions {
 
         Set<String> set1 = new HashSet<>(Arrays.asList(CurrentTimeStampStocksArray));
         Set<String> set2 = new HashSet<>(Arrays.asList(PreviuosTimeStampStocksArray));
-        Set<String> unique = new HashSet<>(set1);
 
         try {
 
-            // Create copies to preserve originals
-            unique.addAll(set2); // Union of both sets
-
-            Set<String> common = new HashSet<>(set1);
-            common.retainAll(set2); // Intersection (common elements)
-
-            // Remove common from union → gives unique-only items
-            unique.removeAll(common);
+            // Remove common elements (retain only those not in array2)
+            set1.removeAll(set2);
 
         } catch (Exception e) {
 
@@ -38,7 +31,7 @@ public class ArrayFunctions {
         }
 
         ReportUtil.report(true, "INFO", "-- Function -- Ending -- getUniqueArrayFromSetOfTwoArrays function", "");
-        return unique.toArray(new String[0]);
+        return set1.toArray(new String[0]);
 
     }
 }
