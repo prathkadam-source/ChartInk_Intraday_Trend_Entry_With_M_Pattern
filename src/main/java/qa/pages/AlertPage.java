@@ -91,8 +91,10 @@ public class AlertPage extends BaseTest {
                     default_Alert_Time_Stamp = Constants.ST2_Cndt_1_DEFAULT_ALERT_TIMESTAMP;
                 }else if(TextMessage.contains(Constants.ST2_CONDITION_2_Step_2)){
                     default_Alert_Time_Stamp = Constants.ST2_Cndt_2_DEFAULT_ALERT_TIMESTAMP;        /// ST 2 Ends
-                }else if(TextMessage.contains(Constants.ST3_CONDITION_1)){
-                    default_Alert_Time_Stamp = Constants.ST3_DEFAULT_ALERT_TIMESTAMP;
+                }else if(TextMessage.contains(Constants.ST1_CONDITION_3_Step_3)){                       /// ST 4 Starts
+                    default_Alert_Time_Stamp = Constants.ST1_Cndt_3_DEFAULT_ALERT_TIMESTAMP;         /// ST 4 Ends
+                }else if(TextMessage.contains(Constants.ST2_CONDITION_3_Step_3)){                       /// ST 3 Starts
+                    default_Alert_Time_Stamp = Constants.ST2_Cndt_3_DEFAULT_ALERT_TIMESTAMP;         /// ST 3 Ends
                 }
 
                 // Verify Alert is latest or not
@@ -108,8 +110,10 @@ public class AlertPage extends BaseTest {
                         Constants.ST2_Cndt_1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
                     }else if(TextMessage.contains(Constants.ST2_CONDITION_2_Step_2)) {
                         Constants.ST2_Cndt_2_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;     /// ST 2 Ends
-                    }else if(TextMessage.contains(Constants.ST3_CONDITION_1)) {
-                        Constants.ST3_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
+                    }else if(TextMessage.contains(Constants.ST1_CONDITION_3_Step_3)) {                  /// ST 4 Starts
+                        Constants.ST1_Cndt_3_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 4 Ends
+                    }else if(TextMessage.contains(Constants.ST2_CONDITION_3_Step_3)) {                  /// ST 3 Starts
+                        Constants.ST2_Cndt_3_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 3 Ends
                     }
 
                     if (GetUniqueStockList) {

@@ -61,6 +61,15 @@ public class Sub_Test_Case extends BaseTest {
 
             Constants.TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
                     Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES);
+
+            //// Textfile to Log updates when ST3_Last_Cndt-watchlists are updated for alerts received for ST2_Cndt3
+            Constants.TEXTFILE_PATH_ST3_LAST_CNDT_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST3_LAST_CNDT_WATCHLIST_UPDATES);
+
+            //// Textfile to Log updates when ST4_Last_Cndt-watchlists are updated for alerts received for ST1_Cndt3
+            Constants.TEXTFILE_PATH_ST4_LAST_CNDT_WATCHLIST_UPDATES = FileAndFolderFunctions.Create_A_TextFile(
+                    Constants.FOLDER_SUB_OUTPUT+ "\\", Constants.TEXTFILE_PATH_ST4_LAST_CNDT_WATCHLIST_UPDATES);
+
             //----------------------------------------
 
             // </editor-fold>
