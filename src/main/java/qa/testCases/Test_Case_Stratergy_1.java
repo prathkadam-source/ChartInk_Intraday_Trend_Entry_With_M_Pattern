@@ -127,6 +127,10 @@ public class Test_Case_Stratergy_1 extends BaseTest {
 
         String Comments = "";
 
+        String Current_Watchlist_Details = "";
+        String Current_Watchlist_Name = "";
+        String Current_Watchlist_Url = "";
+
         String ST1_Cndt_3_Watchlist_Name = prop.getProperty("ST1_Cndt_3_Watchlist_Name");
         String ST1_Cndt_3_Watchlist_Url = prop.getProperty("ST1_Cndt_3_Watchlist_Url");
 
@@ -154,6 +158,24 @@ public class Test_Case_Stratergy_1 extends BaseTest {
                 } else {
                     stocks = new String[]{Alerts_Stock_Names};
                 }
+
+                // <editor-fold desc=" To Handle brealout candle issue of condition 2">
+                // ADDING THIS SUB CONDITION TO HANDLE BREAKOUT CANDLE ISSUE OF CONDITION 2
+                Current_Watchlist_Details = watchlistPage.get_Watchlist_Url(Constants.ST1_CNDT_2_TIME, latest_Alert_TimeStamp);
+                Current_Watchlist_Name = Current_Watchlist_Details.split(",")[0];
+                Current_Watchlist_Url = Current_Watchlist_Details.split(",")[1];
+
+                // add Stocks from "ST1_CONDITION_2" to watchlist of ST1_Cndt2 OF time stamp
+                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+                        Current_Watchlist_Name, Current_Watchlist_Url, stocks);
+
+                // Update Stock Alerts to  output textfile for end of the day validation
+                Comments = Constants.ST1_CONDITION_2_Step_2 + System.lineSeparator() + Constants.ACTION_STOCKS_ADDED ;
+
+                FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST1_CNDT2_PARTICULAR_TIME_FRAME_WATCHLIST_UPDATES,
+                        Comments, Current_Watchlist_Name,
+                        Current_Watchlist_Url, Alerts_Stock_Names);
+                // </editor-fold>
 
                 // add Stocks from "ST1_CONDITION_2" to watchlist of ST1_Cndt3
                 watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,

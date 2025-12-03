@@ -60,6 +60,7 @@ public class Constants {
     public static String TEXTFILE_PATH_ST1_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1 = "ST1_Cndt2_Watchlist_Updates_From_Cndt_1.txt";
 //    public static String TEXTFILE_PATH_ST1_CNDT2_MAIN_HEADER_WATCHLIST_UPDATES_FROM_CNDT_1 = "ST1_Cndt2_Main_Header_Watchlist_Updates_From_Cndt_1.txt";
     public static String TEXTFILE_PATH_ST1_CNDT3_WATCHLIST_UPDATES = "ST1_Cndt3_Watchlist_Updates.txt";
+    public static String TEXTFILE_PATH_ST1_CNDT2_PARTICULAR_TIME_FRAME_WATCHLIST_UPDATES = "ST1_Cndt2_Particular_TimeFrame_Watchlist_Updates.txt";
     public static String TEXTFILE_PATH_ST2_CNDT2_WATCHLIST_UPDATES_FROM_CNDT_1 = "ST2_Cndt2_Watchlist_Updates_From_Cndt_1.txt";
 //    public static String TEXTFILE_PATH_ST2_CNDT2_MAIN_HEADER_WATCHLIST_UPDATES_FROM_CNDT_1 = "ST2_Cndt2_Main_Header_Watchlist_Updates_From_Cndt_1.txt";
     public static String TEXTFILE_PATH_ST2_CNDT3_WATCHLIST_UPDATES = "ST2_Cndt3_Watchlist_Updates.txt";
@@ -115,6 +116,8 @@ public class Constants {
     public static String ST1_CONDITION_2 = "ST1_Cndt_2";
 
     public static String ST1_CNDT_1_TIME = "ST1_Cndt_1_Time_";
+    public static String ST1_CNDT_2_TIME = "ST1_Cndt_2_Time_";
+    public static String ST2_CNDT_1_TIME = "ST2_Cndt_1_Time_";
     public static String ST2_CNDT_2_TIME = "ST2_Cndt_2_Time_";
 
     public static String ST1_CONDITION_1_Step_1 = "ST1_Cndt_1_Step_1";
