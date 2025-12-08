@@ -211,7 +211,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
                 // Update Stock Alerts to  output textfile for end of the day validation
                 Comments = Constants.ST2_CONDITION_2_Step_2 + "- Sub 3 -" + System.lineSeparator() + Constants.ACTION_STOCKS_REMOVED ;
 
-                FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST1_CNDT2_HEADER_DEFAULT_F_AND_O_WATCHLIST_FOR_REMOVED_STOCKS_UPDATES,
+                FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST2_CNDT2_HEADER_DEFAULT_F_AND_O_WATCHLIST_FOR_REMOVED_STOCKS_UPDATES,
                         Comments, ST2_Cndt_2_Header_Default_F_AND_O_Watchlist_Name,
                         ST2_Cndt_2_Header_Default_F_AND_O_Watchlist_Url, Alerts_Stock_Names);
                 // </editor-fold>
