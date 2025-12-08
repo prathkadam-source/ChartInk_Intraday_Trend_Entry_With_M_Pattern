@@ -265,7 +265,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
                     stocks = new String[]{Alerts_Stock_Names};
                 }
 
-                // <editor-fold desc=" Step 2 - Sub 1 -  Remove the filtered stock from 'ST2_Cndt_3_Watchlist' as it has broked the logic ">
+                // <editor-fold desc=" Step 3 - Sub 1 -  Remove the filtered stock from 'ST2_Cndt_3_Watchlist' as it has broked the logic ">
                 ReportUtil.report(true, "INFO", "Step 2 - Sub 1 -  Remove the filtered stock from 'ST2_Cndt_3_Watchlist' as it has broked the logic", "");
 
                 watchlistPage.delete_Stock_From_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
@@ -279,7 +279,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
                         ST2_Cndt_3_Watchlist_Url, Alerts_Stock_Names);
                 // </editor-fold>
 
-                // <editor-fold desc=" Step 2 - Sub 2 - Add the same stock in 'ST2_Cndt_2_Header_Default_F_AND_O_Watchlist' to continue the further flow">
+                // <editor-fold desc=" Step 3 - Sub 2 - Add the same stock in 'ST2_Cndt_2_Header_Default_F_AND_O_Watchlist' to continue the further flow">
                 ReportUtil.report(true, "INFO", "Step 2 - Sub 2 - Add the same stock in 'ST2_Cndt_2_Header_Default_F_AND_O_Watchlist' to continue the further flow", "");
 
                 // add Stocks from "ST2_CONDITION_2 B to watchlist of ST2_Cndt_2_Header_Default_F_AND_O_Watchlist
