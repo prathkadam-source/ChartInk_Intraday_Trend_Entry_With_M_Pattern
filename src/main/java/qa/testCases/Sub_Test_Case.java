@@ -142,7 +142,7 @@ public class Sub_Test_Case extends BaseTest {
                 System.out.println(Interval);
                 ReportUtil.report(true, "INFO", Interval, "");
 
-//                  test_Case_Stratergy_1.Sell_Trades_From_Logic_iFVG();
+                  test_Case_Stratergy_1.Sell_Trades_From_Logic_iFVG();
                   test_Case_Stratergy_2.Buy_Trades_From_Logic_iFVG();
 //                test_Case_Stratergy_3.Sell_Trades_From_Negative_Supertrend_Of_Sell_Trades();
 //                test_Case_Stratergy_4.Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades();
