@@ -19,11 +19,11 @@ public class Constants {
     public static final String WEBPAGE_ALERT = "ALERT";
 
     // <editor-fold desc="SubTabDetails New Statergy">
-    public static final String TAB_ALERTPAGE_NAME_ST_1_FIRST_CONDITION = "ST_1_Cndt_1_Intraday_Sell_Side_Inverse_FVG_Breakout";
-    public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION = "ST_1_Cndt_2_Intraday_Sell_Side_IFVG_Statergy_Step_2_Failed_Of_Buy_FVG_Buy_Breakout";
-    public static final String TAB_ALERTPAGE_NAME_ST_1_THIRD_CONDITION = "ST_1_Cndt_2_B_Intraday_Sell_Side_iFVG_Statergy_Step_3_Failed_Of_Sell_iFVG_Breakout";
-    public static final String TAB_ALERTPAGE_NAME_ST_1_FOURTH_CONDITION = "ST_1_Cndt_4_Intraday_Buy_Side_iFVG_Statergy_Step_4_Price_Close_above_SMA_and_FVG";
-    public static final String TAB_ALERTPAGE_NAME_ST_1_FIFTH_CONDITION = "ST_1_Cndt_5_Intraday_Buy_Step_5_If_Price_Closed_below_Sell_FVG_Then_Remove_Stocks";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_FIRST_CONDITION = "ST_1_Cndt_1_Intraday_Sell_Side_M_Pattern_Statergy_Step_1_Buy_FVG_Breakout";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION = "ST_1_Cndt_2_Intraday_Sell_Side_M_Pattern_Statergy_Step_2_Price_Close_Below_Buy_FVG_And_SMA";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_THIRD_CONDITION = "ST_1_Cndt_3_Intraday_Sell_Side_M_Pattern_Statergy_Step_3_Price_Close_above_Buy_FVG_And_SMA";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_FOURTH_CONDITION = "ST_1_Cndt_4_Intraday_Sell_Side_M_Pattern_Statergy_Step_4_Price_Close_Below_Buy_FVG_And_SMA";
+    public static final String TAB_ALERTPAGE_NAME_ST_1_FIFTH_CONDITION = "ST_1_Cndt_5_Sell_Side_M_Pattern_Step_5_If_Price_Closed_Above_Buy_FVG_Then_Remove_Stocks";
     public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION_PART_B = "";
 
 
