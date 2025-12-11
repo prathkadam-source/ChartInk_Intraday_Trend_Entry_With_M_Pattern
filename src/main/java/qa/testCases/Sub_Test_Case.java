@@ -25,7 +25,7 @@ public class Sub_Test_Case extends BaseTest {
 
     WatchlistPage watchlistPage = new WatchlistPage();
 
-//    Test_Case_Stratergy_1 test_Case_Stratergy_1 = new Test_Case_Stratergy_1();
+    Test_Case_Stratergy_1 test_Case_Stratergy_1 = new Test_Case_Stratergy_1();
     Test_Case_Stratergy_2 test_Case_Stratergy_2 = new Test_Case_Stratergy_2();
     Test_Case_Stratergy_3 test_Case_Stratergy_3 = new Test_Case_Stratergy_3();
     Test_Case_Stratergy_4 test_Case_Stratergy_4 = new Test_Case_Stratergy_4();
@@ -141,7 +141,7 @@ public class Sub_Test_Case extends BaseTest {
                 System.out.println(Interval);
                 ReportUtil.report(true, "INFO", Interval, "");
 
-//                  test_Case_Stratergy_1.Sell_Trades_From_Logic_M_Pattern();
+                  test_Case_Stratergy_1.Sell_Trades_From_Logic_M_Pattern();
                   test_Case_Stratergy_2.Buy_Trades_From_Logic_W_Pattern();
 //                test_Case_Stratergy_3.Sell_Trades_From_Negative_Supertrend_Of_Sell_Trades();
 //                test_Case_Stratergy_4.Sell_Trades_From_Negative_Supertrend_Of_Buy_Trades();

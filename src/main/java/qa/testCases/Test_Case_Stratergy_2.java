@@ -376,7 +376,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
                         ST2_Cndt_5_Watchlist_Name, ST2_Cndt_5_Watchlist_Url, stocks);
 
                 // Update Stock Alerts to  output textfile for end of the day validation
-                Comments = Constants.ST2_CONDITION_5_Step_5 + "- Sub 3 -" + System.lineSeparator() + Constants.ACTION_STOCKS_REMOVED ;
+                Comments = Constants.ST2_CONDITION_5_Step_5 + "- Sub 1 -" + System.lineSeparator() + Constants.ACTION_STOCKS_REMOVED ;
 
                 FileAndFolderFunctions.update_Output_Text_File_for_Alert_Results(Constants.TEXTFILE_PATH_ST1_CNDT5_WATCHLIST_STOCKS_REMOVAL_UPDATES_FROM_CNDT_5,
                         Comments, ST2_Cndt_5_Watchlist_Name,
