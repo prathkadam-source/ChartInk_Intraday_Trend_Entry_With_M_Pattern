@@ -36,7 +36,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
             Step_1_Checking_ST2_CONDITION_1_Alerts();
 
             /*ST_2_Cndt_2 :   Scan Criteria :
-            ST_2_Cndt_2_Intraday_Buy_Side_IFVG_Statergy_Step_2_Failed_Of_Buy_FVG_Breakout
+            ST_2_Cndt_2_Intraday_Buy_Side_W_Pattern_Statergy_Step_2_Price_Close_Above_Sell_FVG_And_SMA
             [0] 5 minute Close crossed_above [-2] 5 minute Low
             And [0] 5 minute Close > [0] 5 minute Sma ( [0] 5 minute Close , 12 )  of Condition 1
             Steps to perform in code:
@@ -45,7 +45,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
             Step_2_Checking_ST2_CONDITION_2_Alerts();
 
             /*ST_2_Cndt_3 : Scan Criteria :
-            ST_2_Cndt_3_Intraday_Buy_Side_iFVG_Statergy_Step_3_Price_Close_Below_SMA_and_FVG,
+            ST_2_Cndt_3_Buy_Side_W_Pattern_Statergy_Step_3_Price_Close_Below_Sell_FVG_Aand_SMA,
             prices closed below sell FVG block
             [0] 5 minute Low < [-2] 5 minute Low
             [0] 5 minute Close < [0] 5 minute Sma ( [0] 5 minute Close , 12 ) of Condition 1
@@ -55,7 +55,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
             Step_3_Checking_ST2_CONDITION_3_Alerts();
 
             /*ST_2_Cndt_4 : Scan Criteria :
-            ST_2_Cndt_4_Intraday_Buy_Side_iFVG_Statergy_Step_4_Price_Close_above_SMA_and_FVG
+            ST_2_Cndt_4_Intraday_Buy_Side_W_Pattern_Statergy_Step_4_Price_Close_above_Sell_FVG_And_SMA
             [0] 5 minute Close > [-2] 5 minute Low
             [0] 5 minute Close > [0] 5 minute Sma ( [0] 5 minute Close , 12 ) of Condition 1
             Steps to perform in code:
@@ -69,7 +69,7 @@ public class Test_Case_Stratergy_2 extends BaseTest {
             Step_4_Checking_ST2_CONDITION_4_Alerts();
 
             /*ST_2_Cndt_5 :Scan Criteria :
-            ST_2_Cndt_5_Intraday_Buy_Side_iFVG_Statergy_Step_5_If_Price_Closed_below_Sell_FVG_Then_Remove_Stocks
+            ST_2_Cndt_5_Intraday_Buy_Step_5_If_Price_Closed_below_Sell_FVG_Then_Remove_Stocks
             [0] 5 minute Close < [=1] 5 minute High of Condition 1
             Steps to perform in code:
             1. Remove Stocks from 'ST2_Cndt_5_Watchlist'

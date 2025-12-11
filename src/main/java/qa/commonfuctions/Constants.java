@@ -27,10 +27,10 @@ public class Constants {
     public static final String TAB_ALERTPAGE_NAME_ST_1_SECOND_CONDITION_PART_B = "";
 
 
-    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION = "ST_2_Cndt_1_Intraday_Buy_Side_iFVG_Statergy_Step_1_FVG_Sell_Breakout";
-    public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION = "ST_2_Cndt_2_Intraday_Buy_Side_iFVG_Statergy_Step_2_Failed_Of_Sell_FVG_Breakout";
-    public static final String TAB_ALERTPAGE_NAME_ST_2_THIRD_CONDITION = "ST_2_Cndt_3_Intraday_Buy_Side_iFVG_Statergy_Step_3_Price_Close_Below_SMA_and_FVG";
-    public static final String TAB_ALERTPAGE_NAME_ST_2_FOURTH_CONDITION = "ST_2_Cndt_4_Intraday_Buy_Side_iFVG_Statergy_Step_4_Price_Close_above_SMA_and_FVG";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_FIRST_CONDITION = "ST_2_Cndt_1_Intraday_Buy_Side_W_Pattern_Statergy_Step_1_Sell_FVG_Breakout";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION = "ST_2_Cndt_2_Intraday_Buy_Side_W_Pattern_Statergy_Step_2_Price_Close_Above_Sell_FVG_And_SMA";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_THIRD_CONDITION = "ST_2_Cndt_3_Buy_Side_W_Pattern_Statergy_Step_3_Price_Close_Below_Sell_FVG_Aand_SMA";
+    public static final String TAB_ALERTPAGE_NAME_ST_2_FOURTH_CONDITION = "ST_2_Cndt_4_Intraday_Buy_Side_W_Pattern_Statergy_Step_4_Price_Close_above_Sell_FVG_And_SMA";
     public static final String TAB_ALERTPAGE_NAME_ST_2_FIFTH_CONDITION = "ST_2_Cndt_5_Intraday_Buy_Step_5_If_Price_Closed_below_Sell_FVG_Then_Remove_Stocks";
     public static final String TAB_ALERTPAGE_NAME_ST_2_SECOND_CONDITION_PART_B = "ST_2_Cndt_2_B_Intraday_Buy_Side_iFVG_Statergy_Step_3_Failed_Of_Buy_iFVG_Breakout";
 
