@@ -53,6 +53,43 @@ public class SeleniumHelper extends BaseTest {
         }
     }
 
+    public void makeElementvisibleByJavaScript(By locator) {
+
+        try {
+            WebElement element = driver.findElement(locator);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.display='block'; arguments[0].style.visibility='visible';", element);
+
+        } catch (Exception e) {
+            System.out.println("Error in click: " + e.getMessage());
+        }
+    }
+
+    public void triggerFrontendStateByJavaScript(By locator) {
+
+        try {
+            WebElement element = driver.findElement(locator);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript(
+                    """
+                    const input = arguments[0];
+                    const file = new File(['dummy'], 'runTime_Stocks_for_watchlist.txt', { type: 'text/plain' });
+                
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                
+                    input.files = dataTransfer.files;
+                
+                    input.dispatchEvent(new Event('change', { bubbles: true }));
+                    """,
+                    element
+            );
+
+        } catch (Exception e) {
+            System.out.println("Error in click: " + e.getMessage());
+        }
+    }
+
     // ✅ 3. Safe SendKeys
     public void sendKeysSafe(By locator, String text) {
         try {

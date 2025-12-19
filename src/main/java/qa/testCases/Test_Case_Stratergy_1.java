@@ -119,14 +119,19 @@ public class Test_Case_Stratergy_1 extends BaseTest {
                 } else {
                     stocks = new String[]{Alerts_Stock_Names};
                 }
-//
+
                 Current_Watchlist_Details = watchlistPage.get_Watchlist_Url(Constants.ST1_CNDT_1_TIME, latest_Alert_TimeStamp);
                 Current_Watchlist_Name = Current_Watchlist_Details.split(",")[0];
                 Current_Watchlist_Url = Current_Watchlist_Details.split(",")[1];
 
-                // add Stocks from "ST1_CONDITION_1 to watchlist of ST1_Cndt2
-                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
-                        Current_Watchlist_Name, Current_Watchlist_Url, stocks);
+                /// Upload Stocks using Auto_it App and textfile
+                watchlistPage.upload_Stock_List_TextFile_Using_Auto_It(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST,
+                        Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+                        Current_Watchlist_Name, Current_Watchlist_Url, Alerts_Stock_Names);
+
+//                // add Stocks from "ST1_CONDITION_1 to watchlist of ST1_Cndt2
+//                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+//                        Current_Watchlist_Name, Current_Watchlist_Url, stocks);
 
                 // Update Stock Alerts to  output textfile for end of the day validation
                 Comments = Constants.ST1_CONDITION_1_Step_1 + System.lineSeparator() + Constants.ACTION_STOCKS_ADDED ;
@@ -184,9 +189,14 @@ public class Test_Case_Stratergy_1 extends BaseTest {
                 // <editor-fold desc=" Step 2 - Sub 1 - Adding stocks from alert ST1_CONDITION_2 to ST1_Cndt3 watchlist ">
                 ReportUtil.report(true, "INFO", "Step 2 - Sub 1 - Adding stocks from alert ST1_CONDITION_2 to ST1_Cndt3 watchlist ", "");
 
+                /// Upload Stocks using Auto_it App and textfile
+                watchlistPage.upload_Stock_List_TextFile_Using_Auto_It(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST,
+                        Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+                        ST1_Cndt_3_Watchlist_Name, ST1_Cndt_3_Watchlist_Url, Alerts_Stock_Names);
+
                 // add Stocks from "ST1_CONDITION_2 to watchlist of ST1_Cndt3
-                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
-                        ST1_Cndt_3_Watchlist_Name, ST1_Cndt_3_Watchlist_Url, stocks);
+//                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+//                        ST1_Cndt_3_Watchlist_Name, ST1_Cndt_3_Watchlist_Url, stocks);
 
                 // Update Stock Alerts to  output textfile for end of the day validation
                 Comments = Constants.ST1_CONDITION_2_Step_2 + "- Sub 1 -" + System.lineSeparator() + Constants.ACTION_STOCKS_ADDED ;
@@ -244,9 +254,14 @@ public class Test_Case_Stratergy_1 extends BaseTest {
                 // <editor-fold desc=" Step 3 - Sub 1 - Adding stocks from alert ST1_CONDITION_3 to ST1_Cndt4 watchlist ">
                 ReportUtil.report(true, "INFO", "Step 3 - Sub 1 - Adding stocks from alert ST1_CONDITION_3 to ST1_Cndt4 watchlist ", "");
 
+                /// Upload Stocks using Auto_it App and textfile
+                watchlistPage.upload_Stock_List_TextFile_Using_Auto_It(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST,
+                        Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+                        ST1_Cndt_4_Watchlist_Name, ST1_Cndt_4_Watchlist_Url, Alerts_Stock_Names);
+
                 // add Stocks from "ST1_CONDITION_3 to watchlist of ST1_Cndt4
-                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
-                        ST1_Cndt_4_Watchlist_Name, ST1_Cndt_4_Watchlist_Url, stocks);
+//                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+//                        ST1_Cndt_4_Watchlist_Name, ST1_Cndt_4_Watchlist_Url, stocks);
 
                 // Update Stock Alerts to  output textfile for end of the day validation
                 Comments = Constants.ST1_CONDITION_3_Step_3 + "- Sub 1 -" + System.lineSeparator() + Constants.ACTION_STOCKS_ADDED ;
@@ -304,9 +319,14 @@ public class Test_Case_Stratergy_1 extends BaseTest {
                 // <editor-fold desc=" Step 2 - Sub 1 - Adding stocks from alert ST1_CONDITION_4 to ST1_Cndt5 watchlist ">
                 ReportUtil.report(true, "INFO", "Step 4 - Sub 1 - Adding stocks from alert ST1_CONDITION_4 to ST1_Cndt5 watchlist ", "");
 
+                /// Upload Stocks using Auto_it App and textfile
+                watchlistPage.upload_Stock_List_TextFile_Using_Auto_It(Constants.TEXTFILE_PATH_FOR_RUNTIME_STOCKS_FOR_WATCHLIST,
+                        Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+                        ST1_Cndt_5_Watchlist_Name, ST1_Cndt_5_Watchlist_Url, Alerts_Stock_Names);
+
                 // add Stocks from "ST1_CONDITION_3 to watchlist of ST1_Cndt4
-                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
-                        ST1_Cndt_5_Watchlist_Name, ST1_Cndt_5_Watchlist_Url, stocks);
+//                watchlistPage.add_Stocks_To_Watchlist(Constants.TAB_DEFAULT_WATCHLIST_PAGE,
+//                        ST1_Cndt_5_Watchlist_Name, ST1_Cndt_5_Watchlist_Url, stocks);
 
                 // Update Stock Alerts to  output textfile for end of the day validation
                 Comments = Constants.ST1_CONDITION_4_Step_4 + "- Sub 1 -" + System.lineSeparator() + Constants.ACTION_STOCKS_ADDED ;

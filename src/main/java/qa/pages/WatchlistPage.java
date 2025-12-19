@@ -26,7 +26,8 @@ public class WatchlistPage extends BaseTest {
     public static final By WebElement_Watchlist_Name_Link = By.xpath("//*[@aria-current='page']");
     public static final By WebElement_Selected_Watchlist_SubTab = By.xpath("//*[@href='/watchlist_dashboard' and contains(@class,'arctic-pearl')]");
     public static final By WebElement_Choose_File_Button = By.xpath("(//*[ contains(@class,'button') ] [contains (text(), 'Select a file') ] )[1]");
-    public static final By WebElement_Upload_Button = By.xpath("(//*[ contains(@class,'button') ] //*[contains (text(), 'Upload') ] )[1]");
+//    public static final By WebElement_Upload_Button = By.xpath("(//*[ contains(@class,'button') ] //*[contains (text(), 'Upload') ] )[1]");
+    public static final By WebElement_Upload_Button = By.xpath("(//*[ contains(@class,'cursor-pointer') ] //*[contains (text(), 'Upload') ] )[1]");
     public static final By WebElement_Empty_Watchlist_Button = By.xpath("//*[contains(@class,'cursor-pointer hidden md:flex')]//*[text()= 'Empty watchlist']");
     public static final By WebElement_Success_Message = By.xpath("//*[contains(@class,'success alert')]");
     //public static final By WebElement_NoDataAvailableInTable_Message = By.xpath("//*[contains(@class,'empty') and text()= 'No data available in table']");
@@ -38,10 +39,13 @@ public class WatchlistPage extends BaseTest {
     public static final By WebElement_PopUp_Ok_Button = By.xpath("//*[@role='dialog']//*[contains(text(),'Ok')]");
     public static final By WebElement_Search_Textbox = By.xpath("//*[@id='search']");
     public static final By WebElement_StockAddedToWatchlist_Text = By.xpath("//*[contains(text(),'Stock added to watchlist')]");
+    public static final By WebElement_WatchlistIS_Uploaded_Text = By.xpath("//*[contains(text(),'Watchlist is uploaded')]");
+
     public static final By WebElement_Remove_Stock_Popup_Confirmation_Button = By.xpath("//*[contains(@class,'button')]//*[contains(text(),'Confirm')]");
+    public static final By WebElement_Select_A_File_Button = By.xpath("//*[ contains(@class,'button') and contains (text(), ' Select a file ') ] ");
+    public static final By WebElement_OS_File_Upload = By.xpath("(//*[ @type='file' and @required = 'required' ])[1] ");
 
-
-
+    public static final By WebElement_FileInput  = By.cssSelector("input[type='file']");
     public static final String xpath_For_StockName_of_Add_Stocklist = "//*[contains (@class,'watchlist')]//*[text()=\"%s\"]";
 //    public static final String xpath_For_StockName_of_Add_Stocklist = "//*[contains (@class,'watchlist')]//*[contains(text(),\"%s\")]";
     public static final String text_No_Stock_Present = "No Stocks Present..";
@@ -275,7 +279,91 @@ public class WatchlistPage extends BaseTest {
 
         return flag;
     }
+    public boolean upload_Stock_List_TextFile_Using_Auto_It(String File_Location , String Tab_Name, String Watchlist_Name, String Watchlist_Url, String Alert_Stock_Names){
 
+        ReportUtil.report(true, "INFO", "-- Function -- Starting -- upload_Stock_List_TextFile_Using_Auto_It function ","");
+
+        boolean flag= false;
+        String auto_It_File_Path = System.getProperty("user.dir") + "/AutoIt_File_Uploader_Exe/Stocks_FileUpload.exe";
+        String Stock_File_Path = System.getProperty("user.dir") + "\\src\\main\\resources\\data\\runTime_Stocks_for_watchlist.txt";
+
+        try {
+            this.navigate_to_Particular_Watchlist(Tab_Name, Watchlist_Url, Watchlist_Name);
+
+            // Click button that opens OS dialog
+            helper.safeClick(WebElement_Select_A_File_Button);
+            Thread.sleep(1000);
+            // Execute AutoIT EXE
+//            Runtime.getRuntime().exec(
+//        "C:\\Users\\prath\\IdeaProjects\\ChartInk_Intraday_Trend_Entry_With_M_Pattern\\AutoIt_File_Uploader_Exe\\Stocks_FileUpload.exe");
+
+            Runtime.getRuntime().exec(
+                    auto_It_File_Path + " \"" + Stock_File_Path + "\"");
+
+            // Wait to ensure file upload completes
+            if (helper.safeFindElement(WebElement_Upload_Button,3)) {
+                Thread.sleep(2000);
+                this.click_Upload_Button();
+                if (helper.safeFindElement(WebElement_WatchlistIS_Uploaded_Text, 2)) {
+
+                    //browserAlertHandler.click_Ok();
+                    this.click_On_Popup_Ok_Button();
+                    Thread.sleep(1000);
+
+                    System.out.println("Stock : '" + Alert_Stock_Names + "' added in watchlist '" + Watchlist_Name + "'"  + " using Auto_It App");
+                    ReportUtil.report(true, "PASS", "Stock : '" + Alert_Stock_Names + "' added in watchlist '" + Watchlist_Name + "'", " using Auto_It App");
+                }
+            } else {
+
+                System.out.println("Stock '" + Alert_Stock_Names + "' not added to Watchlist '" + Watchlist_Name + "' " + Watchlist_Url +" using Auto_It App");
+                ReportUtil.report(false, "FAIL",
+                        "Stock '" + Alert_Stock_Names + "' not added to Watchlist '" + Watchlist_Name + "' ", Watchlist_Url +" using Auto_It App");
+            }
+
+        }catch (Exception e) {
+
+            System.out.println("upload_Stock_List_TextFile_Using_Auto_It: " + e.getMessage());
+            ReportUtil.report( false, "FAIL", "upload_Stock_List_TextFile_Using_Auto_It, ",  e.getMessage());
+        }
+
+        ReportUtil.report(true, "INFO", "-- Function -- Ending -- upload_Stock_List_TextFile_Using_Auto_It function ", "");
+
+        return flag;
+    }
+    public boolean upload_Stock_List_TextFile_Directly (String File_Location , String Tab_Name, String Watchlist_Name, String Watchlist_Url){
+
+        ReportUtil.report(true, "INFO", "-- Function -- Starting -- upload_Stock_List_TextFile_Directly function ","");
+
+        boolean flag= false;
+
+        try {
+            this.navigate_to_Particular_Watchlist(Tab_Name, Watchlist_Url, Watchlist_Name);
+
+//            helper.sendKeysSafe(WebElement_Select_A_File_Button,File_Location);
+            helper.makeElementvisibleByJavaScript(WebElement_FileInput);
+            helper.sendKeysSafe(WebElement_FileInput,File_Location);
+            helper.triggerFrontendStateByJavaScript(WebElement_FileInput);
+
+            // Wait to ensure file upload completes
+
+            Thread.sleep(1000);
+
+            this.click_Upload_Button();
+
+            this.isElement_Success_Message_Visible();
+
+            ReportUtil.report( true, "PASS", "Text file ",  "'"+File_Location + "' uploaded successfully.");
+
+        }catch (Exception e) {
+
+            System.out.println("upload_Stock_List_TextFile: " + e.getMessage());
+            ReportUtil.report( false, "FAIL", "upload_Stock_List_TextFile_Directly, ",  e.getMessage());
+        }
+
+        ReportUtil.report(true, "INFO", "-- Function -- Ending -- upload_Stock_List_TextFile_Directly function ", "");
+
+        return flag;
+    }
     public boolean upload_Stock_List_TextFile(String File_Location){
 
         ReportUtil.report(true, "INFO", "-- Function -- Starting -- upload_Stock_List_TextFile function ","");
