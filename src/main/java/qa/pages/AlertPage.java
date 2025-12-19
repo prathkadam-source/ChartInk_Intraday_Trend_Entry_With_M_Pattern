@@ -103,13 +103,11 @@ public class AlertPage extends BaseTest {
                     default_Alert_Time_Stamp = Constants.ST2_Cndt_4_DEFAULT_ALERT_TIMESTAMP;        /// ST 2 Ends
                 }else if(TextMessage.contains(Constants.ST2_CONDITION_5_Step_5)){
                     default_Alert_Time_Stamp = Constants.ST2_Cndt_5_DEFAULT_ALERT_TIMESTAMP;        /// ST 2 Ends
+                }else if(TextMessage.contains(Constants.ST5_CONDITION_1_Step_1)){                       /// ST 5 Starts
+                    default_Alert_Time_Stamp = Constants.ST5_Cndt_1_DEFAULT_ALERT_TIMESTAMP;         /// ST 5 Ends
+                }else if(TextMessage.contains(Constants.ST6_CONDITION_1_Step_1)){                       /// ST 6 Starts
+                    default_Alert_Time_Stamp = Constants.ST6_Cndt_1_DEFAULT_ALERT_TIMESTAMP;         /// ST 6 Ends
                 }
-
-//                else if(TextMessage.contains(Constants.ST1_CONDITION_3_Step_3)){                       /// ST 4 Starts
-//                    default_Alert_Time_Stamp = Constants.ST1_Cndt_3_DEFAULT_ALERT_TIMESTAMP;         /// ST 4 Ends
-//                }else if(TextMessage.contains(Constants.ST2_CONDITION_3_Step_3)){                       /// ST 3 Starts
-//                    default_Alert_Time_Stamp = Constants.ST2_Cndt_3_DEFAULT_ALERT_TIMESTAMP;         /// ST 3 Ends
-//                }
 
                 // Verify Alert is latest or not
                 if (DateTimeFunctions.compare_Date_Time(latest_Alert_TimeStamp,default_Alert_Time_Stamp)){
@@ -136,12 +134,11 @@ public class AlertPage extends BaseTest {
                         Constants.ST2_Cndt_4_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;
                     }else if(TextMessage.contains(Constants.ST2_CONDITION_5_Step_5)) {
                         Constants.ST2_Cndt_5_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;     /// ST 2 Ends
+                    } else if(TextMessage.contains(Constants.ST5_CONDITION_1_Step_1)) {                  /// ST 5 Starts
+                        Constants.ST5_Cndt_1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 5 Ends
+                    }else if(TextMessage.contains(Constants.ST6_CONDITION_1_Step_1)) {                  /// ST 6 Starts
+                        Constants.ST6_Cndt_1_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 6 Ends
                     }
-//                    else if(TextMessage.contains(Constants.ST1_CONDITION_3_Step_3)) {                  /// ST 4 Starts
-//                        Constants.ST1_Cndt_3_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 4 Ends
-//                    }else if(TextMessage.contains(Constants.ST2_CONDITION_3_Step_3)) {                  /// ST 3 Starts
-//                        Constants.ST2_Cndt_3_DEFAULT_ALERT_TIMESTAMP = latest_Alert_TimeStamp;   /// ST 3 Ends
-//                    }
 
                     if (GetUniqueStockList) {
                         // This function will get unique stocks name compared with current and previous timestamp alert
