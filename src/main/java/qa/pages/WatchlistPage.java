@@ -301,12 +301,13 @@ public class WatchlistPage extends BaseTest {
                     auto_It_File_Path + " \"" + Stock_File_Path + "\"");
 
             // Wait to ensure file upload completes
-            if (helper.safeFindElement(WebElement_Upload_Button,3)) {
-                Thread.sleep(2000);
+            if (helper.safeFindElement(WebElement_Upload_Button,4)) {
+                Thread.sleep(3000);
                 this.click_Upload_Button();
                 if (helper.safeFindElement(WebElement_WatchlistIS_Uploaded_Text, 2)) {
 
                     //browserAlertHandler.click_Ok();
+                    Thread.sleep(1000);
                     this.click_On_Popup_Ok_Button();
                     Thread.sleep(1000);
 
